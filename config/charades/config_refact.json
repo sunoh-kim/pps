@@ -1,0 +1,64 @@
+{
+  "exp_name": "exp-charades_refact",
+  "dataset": {
+    "name": "CharadesSTA",
+    "feature_path": "data/charades/i3d_features.hdf5",
+    "train_data": "data/charades/train.json",
+    "test_data": "data/charades/test.json",
+    "vocab_path": "data/charades/glove.pkl",
+    "vocab_size": 1111,
+    "max_num_words": 20,
+    "max_num_segments": 200
+  },
+  "train": {
+    "wandb_path": "./",
+    "log_path": "./log",
+    "save_path": "./checkpoints/charades/",
+    "batch_size": 32,
+    "num_epochs": 30,
+    "use_wandb": true,
+    "save_model": true,
+    "optimizer": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    }
+  },
+  "model": {
+    "name": "PPS",
+    "frame_feat_dim": 1024,
+    "word_feat_dim": 300,
+    "hidden_dim": 256,
+    "dropout": 0.1,
+    "masked_words_ratio": 3,
+    "mask_type": "gaussian",
+    "num_props": 7,
+    "sigma_gauss": 9,
+    "sigma_laplace": 9,
+    "num_neg_mask": 3,
+    "sigma_neg_inv_gauss": 1,
+    "sigma_neg_gauss": 9,
+    "use_attn": true,
+    "pred_gamma": 0,
+    "neg_type": "learnable_gaussian",
+    "DualTransformer": {
+      "d_model": 256,
+      "num_heads": 4,
+      "num_decoder_layers1": 3,
+      "num_decoder_layers2": 3,
+      "dropout": 0.1
+    }
+  },
+  "loss": {
+    "margin_hneg": 0.1,
+    "margin_eneg": 0.15,
+    "lambda_inter_push": 0.15,
+    "lambda_intra_push": 0.15,
+    "alpha_ivc": 3,
+    "alpha_pull": 5,
+    "alpha_inter_push": 3,
+    "alpha_intra_push": 0.0012,
+    "num_train_prop": 1
+  }
+}

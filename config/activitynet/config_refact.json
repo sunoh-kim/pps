@@ -1,0 +1,64 @@
+{
+  "exp_name": "exp-activitynet_refact",
+  "dataset": {
+    "name": "ActivityNet",
+    "feature_path": "data/activitynet/sub_activitynet_v1-3.c3d.hdf5",
+    "train_data": "data/activitynet/train_data.json",
+    "test_data": "data/activitynet/test_data.json",
+    "vocab_path": "data/activitynet/glove.pkl",
+    "vocab_size": 8000,
+    "max_num_words": 20,
+    "max_num_segments": 200
+  },
+  "train": {
+    "wandb_path": "./",
+    "log_path": "./log",
+    "save_path": "./checkpoints/activitynet/",
+    "batch_size": 32,
+    "num_epochs": 30,
+    "use_wandb": true,
+    "save_model": true,
+    "optimizer": {
+      "lr": 4e-4,
+      "weight_decay": 0,
+      "warmup_updates": 400,
+      "warmup_init_lr": 1e-7
+    }
+  },
+  "model": {
+    "name": "PPS",
+    "frame_feat_dim": 500,
+    "word_feat_dim": 300,
+    "hidden_dim": 256,
+    "dropout": 0.1,
+    "masked_words_ratio": 3,
+    "mask_type": "gaussian",
+    "num_props": 5,
+    "sigma_gauss": 4,
+    "sigma_laplace": 4,
+    "num_neg_mask": 2,
+    "sigma_neg_inv_gauss": 1,
+    "sigma_neg_gauss": 3,
+    "use_attn": true,
+    "pred_gamma": 0.15,
+    "neg_type": "learnable_gaussian",
+    "DualTransformer": {
+      "d_model": 256,
+      "num_heads": 4,
+      "num_decoder_layers1": 3,
+      "num_decoder_layers2": 3,
+      "dropout": 0.1
+    }
+  },
+  "loss": {
+    "margin_hneg": 0.1,
+    "margin_eneg": 0.15,
+    "lambda_inter_push": 0.15,
+    "lambda_intra_push": 0.15,
+    "alpha_ivc": 1,
+    "alpha_pull": 0.2,
+    "alpha_inter_push": 0.2,
+    "alpha_intra_push": 0.005,
+    "num_train_prop": 1
+  }
+}
