@@ -1,9 +1,10 @@
 # PPS: Gaussian Mixture Proposals with Pull-Push Learning Scheme to Capture Diverse Events for Weakly Supervised Temporal Video Grounding
 
-This repositroy contains a Pytorch implementation of the paper 'Gaussian Mixture Proposals with Pull-Push Learning Scheme to Capture Diverse Events for Weakly Supervised Temporal Video Grounding' (PPS) accepted in AAAI2024. [Paper](https://arxiv.org/pdf/2312.16388v1.pdf)
+This repositroy contains a Pytorch implementation of the paper '[Gaussian Mixture Proposals with Pull-Push Learning Scheme to Capture Diverse Events for Weakly Supervised Temporal Video Grounding](https://arxiv.org/pdf/2312.16388v1.pdf)' (PPS) accepted in AAAI2024.
 
 
 ![PPS_overview](./PPS_overview.png)
+
 In the weakly supervised temporal video grounding study, previous methods use predetermined single Gaussian proposals which lack the ability to express diverse events described by the sentence query. To enhance the expression ability of a proposal, we propose a Gaussian mixture proposal that can depict arbitrary shapes by learning importance, centroid, and range of every Gaussian in the mixture. In learning the Gaussian mixture proposal, each Gaussian is not trained in a feature space but is implemented over a temporal location. Thus the conventional feature-based learning for Gaussian mixture model is not valid for our case. In our special setting, to learn moderately coupled Gaussian mixture capturing diverse events, we newly propose a pull-push learning scheme using pulling and pushing losses, each of which plays an opposite role to the other. The effects of components in our scheme are verified in-depth with extensive ablation studies and the overall scheme achieves state-of-the-art performance.
 
 ## Results
